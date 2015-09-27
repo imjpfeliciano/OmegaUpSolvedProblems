@@ -1,0 +1,26 @@
+iniciar-programa
+	define-nueva-instruccion apila como inicio
+    	mientras algun-zumbador-en-la-mochila hacer inicio
+        	deja-zumbador;
+            si frente-libre entonces avanza;
+        fin;
+        repetir 2 veces gira-izquierda;
+        mientras frente-libre hacer avanza;
+        gira-izquierda;
+        si frente-libre entonces inicio
+        	avanza;
+            si no-junto-a-zumbador entonces apagate;
+        fin sino inicio
+        	apagate;
+        fin;
+    fin;
+    inicia-ejecucion
+    	repetir 3 veces gira-izquierda;
+        mientras no-junto-a-zumbador y frente-libre hacer avanza;
+        mientras junto-a-zumbador hacer inicio
+        	gira-izquierda;
+            mientras junto-a-zumbador hacer coge-zumbador;
+            apila;
+        fin;
+    termina-ejecucion
+finalizar-programa

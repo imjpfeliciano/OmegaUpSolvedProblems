@@ -1,0 +1,6 @@
+iniciar-programa
+    inicia-ejecucion
+        repetir 3 veces avanza;
+        apagate;
+    termina-ejecucion
+finalizar-programa

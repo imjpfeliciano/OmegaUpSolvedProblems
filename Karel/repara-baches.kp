@@ -1,0 +1,20 @@
+iniciar-programa
+	define-nueva-instruccion llena como inicio
+    	mientras junto-a-zumbador y frente-libre hacer avanza;
+        si no-junto-a-zumbador entonces deja-zumbador;
+        si frente-bloqueado entonces inicio
+        	si derecha-libre entonces inicio
+            	repetir 3 veces gira-izquierda;
+                avanza;
+                repetir 3 veces gira-izquierda;
+                mientras frente-libre hacer avanza;
+                repetir 2 veces gira-izquierda;
+            fin  sino inicio
+            	apagate;
+            fin;
+        fin;
+    fin;
+    inicia-ejecucion
+		mientras orientado-al-norte hacer llena;
+    termina-ejecucion
+finalizar-programa

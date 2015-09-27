@@ -1,0 +1,52 @@
+class program {
+
+void busqueda_caminos(){
+    if(nextToABeeper){
+        pickbeeper();
+        if(nextToABeeper){
+            putbeeper();
+        } else {
+            iterate(4){
+                turnleft();
+                if(frontIsClear){
+                    move();
+                    busqueda_caminos();
+                    iterate(2) turnleft();
+                    move();
+                    iterate(2) turnleft();
+                }
+            }
+        }
+        putbeeper();
+    }
+}
+
+void resultado(){
+    if(nextToABeeper){
+        pickbeeper();
+        if(nextToABeeper){
+            pickbeeper();
+            turnoff();
+        } else {
+            iterate(4){
+                turnleft();
+                if(frontIsClear){
+                    move();
+                    resultado();
+                    iterate(2) turnleft();
+                    move();
+                    iterate(2) turnleft();
+                }
+            }
+        }
+        putbeeper();
+    }
+}
+
+program() {
+    busqueda_caminos();
+    resultado();
+    turnoff();
+}
+
+}

@@ -1,0 +1,25 @@
+iniciar-programa
+	define-nueva-instruccion gira(n) como repetir n veces gira-izquierda;
+	define-nueva-instruccion camina(x) como inicio
+        repetir precede(x) veces inicio
+            si frente-libre y orientado-al-este entonces inicio
+            	avanza;
+            fin sino inicio
+            	mientras no-orientado-al-norte hacer gira-izquierda;
+            fin;
+        fin;
+        si orientado-al-este entonces inicio
+        	deja-zumbador;
+	        si frente-libre entonces avanza;
+        fin;
+    fin;
+    inicia-ejecucion
+		gira(3);
+        mientras orientado-al-este hacer camina(3);
+        gira(1);
+        mientras frente-libre hacer avanza;
+        gira(2);
+        mientras orientado-al-este hacer camina(5);
+        apagate;
+    termina-ejecucion
+finalizar-programa

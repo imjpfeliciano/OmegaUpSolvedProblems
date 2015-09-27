@@ -1,0 +1,64 @@
+iniciar-programa
+    define-nueva-instruccion gira(n) como repetir n veces gira-izquierda;
+    define-nueva-instruccion mueve como inicio
+        si junto-a-zumbador entonces inicio
+            coge-zumbador;
+            mueve;
+            deja-zumbador;
+        fin sino inicio
+            si orientado-al-norte entonces repetir 2 veces avanza;
+            si orientado-al-este entonces inicio
+                mientras no-junto-a-zumbador hacer avanza;
+                coge-zumbador;
+            fin;
+        fin;
+    fin;                
+    define-nueva-instruccion camina(pasos) como inicio
+        si junto-a-zumbador entonces inicio
+            coge-zumbador;
+            camina(sucede(pasos));
+            deja-zumbador;
+        fin sino inicio
+            repetir pasos veces avanza;
+        fin;
+    fin;
+    define-nueva-instruccion cuenta(segundos) como inicio
+        gira(1);
+        avanza;
+        si junto-a-zumbador entonces inicio
+            gira(1);
+            mientras frente-libre hacer avanza;
+            gira(1);
+            mientras frente-libre hacer avanza;
+            repetir segundos veces deja-zumbador;
+            apagate;
+        fin sino inicio
+            gira(1);
+            mientras no-junto-a-zumbador hacer avanza;
+            gira(2);
+            camina(0);
+            gira(2);
+            mientras frente-libre hacer avanza;
+            gira(1);
+            avanza;
+            gira(1);
+            mientras no-junto-a-zumbador hacer avanza;
+            camina(0);
+        fin;
+        cuenta(sucede(segundos));
+    fin;
+    inicia-ejecucion
+        repetir 2 veces inicio
+            avanza;
+            mueve;
+            gira(2);
+            repetir 2 veces avanza;
+            gira(2);
+        fin;
+        avanza;
+        gira(3);
+        mueve;
+        cuenta(0);
+        apagate;
+    termina-ejecucion
+finalizar-programa

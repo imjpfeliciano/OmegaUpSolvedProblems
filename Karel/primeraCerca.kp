@@ -1,0 +1,13 @@
+iniciar-programa
+    inicia-ejecucion
+    	repetir 8 veces coge-zumbador;
+        repetir 4 veces inicio
+        	repetir 2 veces inicio
+            	avanza;
+                deja-zumbador;
+            fin;
+            repetir 3 veces gira-izquierda;
+        fin;
+        apagate;
+    termina-ejecucion
+finalizar-programa
