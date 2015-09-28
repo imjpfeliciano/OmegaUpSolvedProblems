@@ -1,0 +1,61 @@
+iniciar-programa
+    define-nueva-instruccion gira(n) como repetir n veces gira-izquierda;
+    define-nueva-instruccion norte como mientras no-orientado-al-norte hacer gira-izquierda;
+    define-nueva-instruccion sur como mientras no-orientado-al-sur hacer gira-izquierda;
+    define-nueva-instruccion este como mientras no-orientado-al-este hacer gira-izquierda;
+    define-nueva-instruccion oeste como mientras no-orientado-al-oeste hacer gira-izquierda;
+
+    define-nueva-instruccion buscar como inicio
+        si junto-a-zumbador entonces inicio
+            coge-zumbador;   (*nodo perteneciente al area*)
+
+            norte;
+            si frente-libre entonces inicio
+                avanza;
+                buscar;
+                sur;
+                avanza;
+                fin;
+
+            sur;
+            si frente-libre entonces inicio
+                avanza;
+                buscar;
+                norte;
+                avanza;
+                fin;
+
+            este;
+            si frente-libre entonces inicio
+                avanza;
+                buscar;
+                oeste;
+                avanza;
+                fin;
+
+            oeste;
+            si frente-libre entonces inicio
+                avanza;
+                buscar;
+                este;
+                avanza;
+                fin;
+            fin;
+
+        fin;
+
+    define-nueva-instruccion posicionar como inicio
+        mientras no-orientado-al-sur hacer gira-izquierda;
+        mientras frente-libre hacer avanza;
+        gira(3);
+        mientras frente-libre hacer avanza;
+        fin;
+
+    inicia-ejecucion
+        buscar;
+        posicionar;
+        mientras algun-zumbador-en-la-mochila hacer deja-zumbador;
+        repetir 100 veces coge-zumbador;
+        apagate;
+    termina-ejecucion
+finalizar-programa

@@ -1,0 +1,62 @@
+iniciar-programa
+    define-nueva-instruccion r como inicio
+        repetir 2 veces gira-izquierda;
+        fin;
+    define-nueva-instruccion d como inicio
+        repetir 3 veces gira-izquierda;
+        fin;
+    define-nueva-instruccion b como inicio
+        si frente-bloqueado y orientado-al-norte entonces inicio
+            r;
+            deja-zumbador;
+            mientras frente-libre hacer avanza;
+            gira-izquierda;
+            si frente-libre entonces avanza;
+            gira-izquierda;
+           si junto-a-zumbador entonces inicio
+                mientras derecha-bloqueada hacer avanza;
+                d;
+                avanza;
+                d;
+                mientras frente-libre hacer avanza;
+                d;
+                mientras frente-libre hacer avanza;
+                r;
+                avanza;
+                mientras algun-zumbador-en-la-mochila hacer deja-zumbador;
+                r;
+                avanza;
+                apagate;
+                fin;
+            b;
+            fin;
+        deja-zumbador;
+        si frente-libre entonces avanza;
+
+        b;
+        fin;
+
+
+    define-nueva-instruccion a como inicio
+        mientras no-orientado-al-este hacer gira-izquierda;
+        avanza;
+        mientras junto-a-zumbador hacer coge-zumbador;
+        r;
+        avanza;
+        d;
+        avanza;
+        mientras derecha-bloqueada hacer avanza;
+        d;
+        avanza;
+        d;
+        mientras frente-libre hacer avanza;
+        r;
+        b;
+        fin;
+
+
+    inicia-ejecucion
+        a;
+        apagate;
+    termina-ejecucion
+finalizar-programa
