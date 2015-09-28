@@ -1,0 +1,17 @@
+iniciar-programa
+    inicia-ejecucion
+        mientras no-junto-a-zumbador hacer inicio
+        	si frente-libre entonces inicio
+            	avanza;
+            fin sino inicio
+            	gira-izquierda;
+                mientras derecha-bloqueada hacer avanza;
+                repetir 3 veces gira-izquierda;
+                avanza;
+                repetir 3 veces gira-izquierda;
+                mientras frente-libre hacer avanza;
+                gira-izquierda;
+            fin;
+        fin;
+    termina-ejecucion
+finalizar-programa

@@ -1,0 +1,6 @@
+iniciar-programa
+    inicia-ejecucion
+        mientras derecha-bloqueada o izquierda-bloqueada hacer avanza;
+        apagate;
+    termina-ejecucion
+finalizar-programa

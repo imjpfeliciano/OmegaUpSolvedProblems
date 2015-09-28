@@ -1,0 +1,75 @@
+iniciar-programa
+    define-nueva-instruccion norte como mientras no-orientado-al-norte hacer gira-izquierda;
+    define-nueva-instruccion sur como mientras no-orientado-al-sur hacer gira-izquierda;
+    define-nueva-instruccion este como mientras no-orientado-al-este hacer gira-izquierda;
+    define-nueva-instruccion oeste como mientras no-orientado-al-oeste hacer gira-izquierda;
+
+    define-nueva-instruccion comparar(x) como inicio
+        si no si-es-cero(x) entonces inicio
+            si junto-a-zumbador entonces inicio
+                coge-zumbador;
+                comparar(precede(x));
+                deja-zumbador;
+            fin;
+        fin sino inicio
+            mientras junto-a-zumbador hacer coge-zumbador;
+        fin;
+    fin;
+
+    define-nueva-instruccion buscar(distancia) como inicio
+        si junto-a-zumbador entonces inicio
+            coge-zumbador;
+            si junto-a-zumbador entonces inicio
+                coge-zumbador;
+                si junto-a-zumbador entonces inicio
+                    repetir 2 veces deja-zumbador;
+                    comparar(distancia);
+                fin sino inicio
+                    repetir distancia veces deja-zumbador;
+                fin;
+            fin sino inicio
+                deja-zumbador;
+            fin;
+        fin sino inicio
+            deja-zumbador;
+            norte;
+            si frente-libre entonces inicio
+                avanza;
+                buscar(sucede(distancia));
+                sur;
+                avanza;
+            fin;
+
+            sur;
+            si frente-libre entonces inicio
+                avanza;
+                buscar(sucede(distancia));
+                norte;
+                avanza;
+            fin;
+
+            este;
+            si frente-libre entonces inicio
+                avanza;
+                buscar(sucede(distancia));
+                oeste;
+                avanza;
+            fin;
+
+            oeste;
+            si frente-libre entonces inicio
+                avanza;
+                buscar(sucede(distancia));
+                este;
+                avanza;
+            fin;
+
+            coge-zumbador;
+        fin;
+    fin;
+
+    inicia-ejecucion
+        buscar(0);
+        apagate;
+    termina-ejecucion
+finalizar-programa
