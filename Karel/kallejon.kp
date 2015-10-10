@@ -1,0 +1,35 @@
+iniciar-programa
+	define-nueva-instruccion cuenta como inicio
+    	si junto-a-zumbador entonces inicio
+        	coge-zumbador;
+        fin sino inicio
+          si frente-libre entonces inicio
+              avanza;
+              cuenta;
+              deja-zumbador;
+          fin sino inicio
+              si izquierda-libre entonces inicio
+                  gira-izquierda;
+                  cuenta;
+                  deja-zumbador;
+              fin sino inicio
+                  si derecha-libre entonces inicio
+                      gira-izquierda;
+                      gira-izquierda;
+                      gira-izquierda;
+                      cuenta;
+                      deja-zumbador;
+                      deja-zumbador;
+                      deja-zumbador;
+                  fin sino inicio
+                  fin;
+              fin;
+        	  fin;
+        fin;
+    fin;
+    
+    inicia-ejecucion
+		cuenta;
+        apagate;
+    termina-ejecucion
+finalizar-programa

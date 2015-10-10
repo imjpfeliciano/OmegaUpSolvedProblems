@@ -1,0 +1,53 @@
+iniciar-programa
+    define-nueva-instruccion gira(n) como repetir n veces gira-izquierda;
+
+    define-nueva-instruccion dejarMitad como inicio
+        si algun-zumbador-en-la-mochila entonces inicio
+            repetir 2 veces deja-zumbador;
+            dejarMitad;
+            coge-zumbador;
+        fin;
+    fin;
+
+    define-nueva-instruccion cuenta(hombres) como inicio
+        si junto-a-zumbador entonces inicio
+            coge-zumbador;
+            si junto-a-zumbador entonces inicio
+                coge-zumbador;
+                avanza;
+                cuenta(hombres);
+            fin sino inicio
+                avanza;
+                cuenta(sucede(hombres));
+            fin;
+        fin sino inicio
+            gira(2);
+            mientras frente-libre hacer avanza;
+            gira(1);
+            avanza;
+            gira(1);
+            avanza;
+            si junto-a-zumbador entonces inicio
+                cuenta(hombres);
+            fin sino inicio
+                gira(1);
+                mientras frente-libre hacer avanza;
+                gira(1);
+                avanza;
+                repetir hombres veces deja-zumbador;
+                gira(1);
+                avanza;
+                dejarMitad;
+                apagate;
+            fin;
+        fin;
+    fin;
+
+    inicia-ejecucion
+        avanza;                                                      
+        mientras junto-a-zumbador hacer inicio
+            cuenta(0);
+        fin;
+        apagate;
+    termina-ejecucion
+finalizar-programa

@@ -1,0 +1,108 @@
+iniciar-programa
+    define-nueva-instruccion gira(x) como repetir x veces gira-izquierda;
+
+    define-nueva-instruccion checa como inicio
+        si frente-libre entonces inicio
+            avanza;
+        fin sino inicio
+            si derecha-libre entonces inicio
+                gira(3);
+                avanza;
+                gira(3);
+                mientras frente-libre hacer avanza;
+                gira(2);
+            fin sino inicio
+                gira(1);
+                mientras frente-libre hacer avanza;
+                gira(1);
+                mientras frente-libre hacer avanza;
+                gira(1);
+            fin;
+        fin;
+    fin;
+
+    define-nueva-instruccion limpia como inicio
+        mientras no-junto-a-zumbador y frente-libre hacer avanza;
+        si junto-a-zumbador entonces coge-zumbador;
+        checa;
+        si orientado-al-este entonces limpia;
+    fin;
+
+    define-nueva-instruccion compara como inicio
+        coge-zumbador;
+        si junto-a-zumbador entonces inicio
+            deja-zumbador;
+            checa;
+        fin sino inicio
+            repetir 4 veces inicio
+                si frente-libre entonces inicio
+                    avanza;
+                    si no-junto-a-zumbador entonces repetir 2 veces deja-zumbador;
+                    gira(2);
+                    avanza;
+                    gira(3);
+                fin sino inicio
+                    gira(1);
+                fin;
+            fin;
+            repetir 2 veces deja-zumbador;
+            si frente-libre entonces avanza;
+        fin;
+    fin;
+
+    define-nueva-instruccion infecta como inicio
+        mientras frente-libre y no-junto-a-zumbador hacer avanza;
+        si junto-a-zumbador entonces inicio
+            compara;
+        fin sino inicio
+            checa;
+        fin;
+        si orientado-al-este entonces infecta;
+    fin;
+
+    define-nueva-instruccion cambiarColumna(beepers) como inicio
+        gira(2);
+        mientras frente-libre hacer avanza;
+        si izquierda-libre entonces inicio
+            gira(1);
+            avanza;
+            gira(1);
+        fin sino inicio
+            repetir beepers veces deja-zumbador;
+            apagate;
+        fin;
+    fin;
+
+    define-nueva-instruccion cuenta(infectados) como inicio
+        mientras frente-libre y no-junto-a-zumbador hacer avanza;
+        si junto-a-zumbador entonces inicio
+            coge-zumbador;
+            cuenta(sucede(infectados));
+        fin sino inicio
+            cambiarColumna(infectados);
+            cuenta(infectados);
+        fin;
+    fin;
+
+    define-nueva-instruccion contar(dias) como inicio
+        si junto-a-zumbador entonces inicio
+            coge-zumbador;
+            contar(sucede(dias));
+        fin sino inicio
+            mientras frente-libre hacer avanza;
+            repetir dias veces inicio
+                mientras no-orientado-al-este hacer gira-izquierda;
+                infecta;
+                mientras no-orientado-al-este hacer gira-izquierda;
+                limpia;
+                fin;
+            gira(1);
+            cuenta(0);
+        fin;
+    fin;
+
+    inicia-ejecucion
+        mientras no-orientado-al-norte hacer gira-izquierda;
+        contar(0);
+    termina-ejecucion
+finalizar-programa

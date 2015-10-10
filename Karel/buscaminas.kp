@@ -1,0 +1,240 @@
+iniciar-programa
+    define-nueva-instruccion deja(m) como repetir m veces deja-zumbador;
+    define-nueva-instruccion gira(n) como repetir n veces gira-izquierda;
+    define-nueva-instruccion checapared como inicio
+        si frente-bloqueado entonces inicio
+            gira(2);
+            mientras frente-libre hacer avanza;
+            gira(1);
+            si frente-libre entonces inicio
+                avanza;
+                gira(1);
+                sal-de-instruccion;
+                fin
+                sino inicio
+                apagate;
+                fin;
+            fin
+            sino inicio
+            avanza;
+            sal-de-instruccion;
+            fin;
+        fin;
+    define-nueva-instruccion rodeaderecha como inicio
+        avanza;
+        gira(3);
+        deja(1);
+        avanza;
+        deja(1);
+        gira(3);
+        avanza;
+        deja(1);
+        avanza;
+        deja(1);
+        gira(3);
+        avanza;
+        deja(1);
+        fin;
+    define-nueva-instruccion rodeatodo como inicio
+        rodeaderecha;
+        avanza;
+        gira(3);
+        deja(1);
+        repetir 2 veces inicio
+            avanza;
+            deja(1);
+            fin;
+        fin;
+    define-nueva-instruccion rodeaesquina como inicio
+        avanza;
+        gira(3);
+        deja(1);
+        avanza;
+        deja(1);
+        gira(3);
+        avanza;
+        deja(1);
+        gira(3);
+        avanza;
+        mientras no-orientado-al-norte hacer gira-izquierda;
+        fin;
+    define-nueva-instruccion checazum como inicio
+        si junto-a-zumbador entonces inicio
+            coge-zumbador;
+            si junto-a-zumbador entonces inicio
+                coge-zumbador;
+                si junto-a-zumbador entonces inicio
+                    coge-zumbador;
+                    si junto-a-zumbador entonces inicio
+                        coge-zumbador;
+                        si junto-a-zumbador entonces inicio
+                            coge-zumbador;
+                            si junto-a-zumbador entonces inicio
+                                coge-zumbador;
+                                si junto-a-zumbador entonces inicio
+                                    coge-zumbador;
+                                    si junto-a-zumbador entonces inicio
+                                        coge-zumbador;
+                                        si junto-a-zumbador entonces inicio
+                                            deja(8);
+                                            (*rodeando de zumbadores*)
+                                            si frente-libre entonces inicio
+                                                si derecha-libre y izquierda-libre entonces inicio
+                                                    gira(2);
+                                                    si frente-libre entonces inicio
+                                                        gira(2);
+                                                        rodeatodo;
+                                                        gira(2);
+                                                        avanza;
+                                                        gira(1);
+                                                        avanza;
+                                                        gira(1);
+                                                        checapared;
+                                                        fin
+                                                        sino inicio
+                                                        gira(3);
+                                                        rodeaderecha;
+                                                        gira(3);
+                                                        avanza;
+                                                        gira(3);
+                                                        checapared;
+                                                        fin;
+                                                    fin;
+                                                si derecha-bloqueada entonces inicio
+                                                    gira(2);
+                                                    si frente-libre entonces inicio
+                                                        rodeaderecha;
+                                                        gira(3);
+                                                        avanza;
+                                                        gira(2);
+                                                        checapared;
+                                                        fin
+                                                        sino inicio
+                                                        gira(3);
+                                                        rodeaesquina;
+                                                        checapared;
+                                                        fin;
+                                                    fin;
+                                                si izquierda-bloqueada entonces inicio
+                                                    gira(2);
+                                                    si frente-libre entonces inicio
+                                                        gira(2);
+                                                        rodeaderecha;
+                                                        gira(3);
+                                                        avanza;
+                                                        checapared;
+                                                        fin
+                                                        sino inicio
+                                                        gira(2);
+                                                        rodeaesquina;
+                                                        checapared;
+                                                        fin;
+                                                    fin;
+                                                fin
+                                                sino inicio
+                                                si izquierda-libre y derecha-libre entonces inicio
+                                                    gira(3);
+                                                    rodeaderecha;
+                                                    gira(3);
+                                                    avanza;
+                                                    gira(1);
+                                                    checapared;
+                                                    sal-de-instruccion;
+                                                    fin;
+                                                si derecha-bloqueada entonces inicio
+                                                    gira(2);
+                                                    rodeaesquina;
+                                                    checapared;
+                                                    fin;
+                                                si izquierda-bloqueada entonces inicio
+                                                    gira(3);
+                                                    rodeaesquina;
+                                                    checapared;
+                                                    fin;
+                                                fin;
+                                            fin
+                                            sino inicio
+                                            deja(8);
+                                            checapared;
+                                            sal-de-instruccion;
+                                            fin;
+                                        fin
+                                        sino inicio
+                                        deja(7);
+                                        checapared;
+                                        sal-de-instruccion;
+                                        fin;
+                                    fin
+                                    sino inicio
+                                    deja(6);
+                                    checapared;
+                                    sal-de-instruccion;
+                                    fin;
+                                fin
+                                sino inicio
+                                deja(5);
+                                checapared;
+                                sal-de-instruccion;
+                                fin;
+                            fin
+                            sino inicio
+                            deja(4);
+                            checapared;
+                            sal-de-instruccion;
+                            fin;
+                        fin
+                        sino inicio
+                        deja(3);
+                        checapared;
+                        sal-de-instruccion;
+                        fin;
+                    fin
+                    sino inicio
+                    deja(2);
+                    checapared;
+                    sal-de-instruccion;
+                    fin;
+                fin
+                sino inicio
+                deja(1);
+                checapared;
+                sal-de-instruccion;
+                fin;
+            fin
+            sino inicio
+            deja(0);
+            fin;
+        fin;
+    define-nueva-instruccion bminas como inicio
+        si no-junto-a-zumbador entonces inicio
+            si frente-bloqueado y no-junto-a-zumbador entonces inicio
+                gira(2);
+                mientras frente-libre hacer avanza;
+                gira(1);
+                si frente-bloqueado entonces apagate;
+                si frente-libre entonces inicio
+                    avanza;
+                    gira(1);
+                    bminas;
+                    fin;
+                fin
+                sino inicio
+                avanza;
+                bminas;
+                fin;
+            fin;
+        si junto-a-zumbador entonces inicio
+            checazum;
+            bminas;
+            fin;
+        fin;
+    inicia-ejecucion
+        mientras no-orientado-al-sur hacer gira-izquierda;
+        mientras frente-libre hacer avanza;
+        gira(3);
+        mientras frente-libre hacer avanza;
+        gira(3);
+        bminas;
+        apagate;
+    termina-ejecucion
+finalizar-programa
