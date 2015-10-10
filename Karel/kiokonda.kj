@@ -1,0 +1,137 @@
+class program {
+
+void norte(){
+    while(!facingNorth) turnleft();
+}
+
+void oeste(){
+    while(!facingWest) turnleft();
+}
+
+void sur(){
+    while(!facingSouth) turnleft();
+}
+
+void este(){
+    while(!facingEast) turnleft();
+}
+
+void verifica(){
+    iterate(4){
+        turnleft();
+        if(frontIsClear&&!nextToABeeper){
+            move();
+            if(!nextToABeeper){
+                iterate(2) turnleft();
+                if(frontIsClear) move();
+                iterate(2) turnleft();
+            }
+        }
+    }
+}
+
+void marcarCamino(){
+    if(nextToABeeper){
+        iterate(2) pickbeeper();
+        if(nextToABeeper){
+            pickbeeper();
+            if(nextToABeeper){
+                pickbeeper();
+                if(nextToABeeper){
+                    pickbeeper();
+                    verifica();
+                    marcarCamino();
+                    iterate(5) putbeeper();
+                    if(frontIsClear) move();
+                } else {
+                    verifica();
+                    marcarCamino();
+                    iterate(4) putbeeper();
+                    if(frontIsClear) move();
+                }
+            } else {
+                verifica();
+                marcarCamino();
+                iterate(3) putbeeper();
+                if(frontIsClear) move();
+            }
+        } else {
+            verifica();
+            marcarCamino();
+            iterate(2) putbeeper();
+            if(frontIsClear) move();
+        }
+    }  else {
+        sur();
+        move();
+        este();
+    }
+}
+
+void busqueda(){
+    if(nextToABeeper){
+        pickbeeper();
+        if(!nextToABeeper){
+            iterate(4){
+                turnleft();
+                if(frontIsClear){
+                    move();
+                    if(nextToABeeper){
+                        marcarCamino();
+                        turnoff();
+                    } else {
+                        iterate(2) turnleft();
+                        move();
+                        iterate(2) turnleft();
+                    }
+                }
+            }
+        } else {
+            putbeeper();
+        }
+    } else {
+        norte();
+        if(frontIsClear){
+            iterate(2) putbeeper();
+            move();
+            busqueda();
+            sur();
+            if(frontIsClear) move();
+            iterate(2) pickbeeper();
+        }
+        este();
+        if(frontIsClear){
+            iterate(3) putbeeper();
+            move();
+            busqueda();
+            oeste();
+            move();
+            iterate(3) pickbeeper();
+        }
+        sur();
+        if(frontIsClear){
+            iterate(4) putbeeper();
+            move();
+            busqueda();
+            norte();
+            move();
+            iterate(4) pickbeeper();
+        }
+        oeste();
+        if(frontIsClear){
+            iterate(5) putbeeper();
+            move();
+            busqueda();
+            este();
+            move();
+            iterate(5) pickbeeper();
+        }
+    }
+}
+
+program() {
+    busqueda();
+    turnoff();
+}
+
+}
