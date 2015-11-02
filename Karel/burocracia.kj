@@ -1,0 +1,25 @@
+class program {
+
+	void cuenta_pasos(){
+    if(nextToABeeper){
+      pickbeeper();
+      cuenta_pasos();
+      move();
+    }
+  }
+    
+	void cuenta() {
+		if(nextToABeeper){
+      cuenta_pasos();
+      cuenta();
+    }
+    putbeeper();
+  }
+
+  program() {
+  	while(!facingEast) turnleft();
+  	cuenta();
+    turnoff();
+  }
+
+}
