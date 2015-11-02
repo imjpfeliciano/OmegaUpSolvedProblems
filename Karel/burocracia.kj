@@ -1,6 +1,6 @@
 class program {
 
-	void cuenta_pasos(){
+  void cuenta_pasos(){
     if(nextToABeeper){
       pickbeeper();
       cuenta_pasos();
