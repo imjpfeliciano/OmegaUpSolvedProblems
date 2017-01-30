@@ -1,0 +1,7 @@
+interface Main {
+	int Teoria(int c, int u, int a);
+};
+
+interface cluedo {
+	void ResolverCaso();
+};
